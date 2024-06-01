@@ -7,17 +7,20 @@
     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-4.0.xsd">
-    <context:annotation-config/>
-   	<bean class="com.kaustubh.autowire.Address" name="address1">
-		<property name="city" value="Pune"> </property>
-		<property name="street" value="Temp Street"></property>
-	</bean>
-	<bean class="com.kaustubh.autowire.Address" name="address">
+	
+    <context:annotation-config/> <!-- makes annotation available/ enables annotations-->
+	
+	<bean class="com.kaustubh.autowire.annotation.Address" name="temp">
 		<property name="city" value="Delhi"> </property>
 		<property name="street" value="Temp Street at Delhi"></property>
 	</bean>
+
+	<bean class="com.kaustubh.autowire.annotation.Address" name="temp2">
+		<property name="city" value="Pune"/>
+		<property name="street" value="Temp Street in Pune"/>
+	</bean>
 	
-	<bean class="com.kaustubh.autowire.Employee" name="employee" autowire="constructor">
+	<bean class="com.kaustubh.autowire.annotation.Employee" name="employee">
 		
 		
 	</bean>

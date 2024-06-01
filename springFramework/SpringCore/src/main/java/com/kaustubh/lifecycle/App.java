@@ -1,4 +1,4 @@
-package com.kaustubh;
+package com.kaustubh.lifecycle;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

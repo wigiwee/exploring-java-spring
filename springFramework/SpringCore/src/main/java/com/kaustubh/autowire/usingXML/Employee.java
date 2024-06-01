@@ -1,9 +1,7 @@
-package com.kaustubh.autowire;
+package com.kaustubh.autowire.usingXML;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class Employee {
-	@Autowired
 	private Address address;
 
 	public Address getAddress() {
@@ -17,7 +15,6 @@ public class Employee {
 
 	public Employee() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Employee(Address address) {
@@ -27,9 +24,8 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [address=" + address + "]";
+		return "{" +
+			" address='" + getAddress() + "'" +
+			"}";
 	}
-	
-	
-
 }

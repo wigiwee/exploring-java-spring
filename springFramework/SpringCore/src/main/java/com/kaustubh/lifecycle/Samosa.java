@@ -1,4 +1,4 @@
-package com.kaustubh;
+package com.kaustubh.lifecycle;
 
 public class Samosa {
     private double price;

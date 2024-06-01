@@ -1,4 +1,4 @@
-package com.kaustubh.autowire;
+package com.kaustubh.autowire.usingXML;
 
 public class Address {
 	private String street;
@@ -9,12 +9,15 @@ public class Address {
 	public void setCity(String city) {
 		this.city = city;
 	}
+
 	public String getStreet() {
-		return street;
+		return this.street;
 	}
+
 	public void setStreet(String street) {
 		this.street = street;
 	}
+	
 	@Override
 	public String toString() {
 		return "Address [street=" + street + ", city=" + city + "]";

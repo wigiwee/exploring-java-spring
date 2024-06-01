@@ -18,7 +18,7 @@
 	<bean class="com.kaustubh.Pepsi" name="pepsi">
 		<property name="price" value="20"></property>
 	</bean> -->
-	<bean class="com.kaustubh.Fafda"  name="fafda">
+	<bean class="com.kaustubh.lifecycle.Fafda"  name="fafda">
 		<property name="price" value="30"></property>
 	</bean>
 </beans>

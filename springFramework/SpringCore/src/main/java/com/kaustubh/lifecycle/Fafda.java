@@ -1,4 +1,4 @@
-package com.kaustubh;
+package com.kaustubh.lifecycle;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

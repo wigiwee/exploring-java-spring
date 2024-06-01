@@ -1,4 +1,4 @@
-package com.kaustubh;
+package com.kaustubh.lifecycle;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
