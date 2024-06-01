@@ -20,7 +20,7 @@
         <value>History</value>
         <value>Geography</value>
     </util:list>
-
+    <bean class="com.kaustubh.stereotypeAnnotation.Teacher" name="teacher" scope="prototype"></bean>
 
 
 </beans>

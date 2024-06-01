@@ -1,11 +1,12 @@
 package com.kaustubh.stereotypeAnnotation;
 import java.util.List;
-import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component("obj")
+@Scope("prototype")
 public class Student {
     @Value("Kaustubh Kolhe")
     private String studentName;
@@ -20,8 +21,8 @@ public class Student {
         return subjectList;
     }
 
-    public void setSubjectList(List<String> subjecList) {
-        this.subjectList = subjecList;
+    public void setSubjectList(List<String> subjectList) {
+        this.subjectList = subjectList;
     }
 
     public Student() {
@@ -67,6 +68,4 @@ public class Student {
             ", subjecList='" + getSubjectList() + "'" +
             "}";
     }
-
-    
 }
