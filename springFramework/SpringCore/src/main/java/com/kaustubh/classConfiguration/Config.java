@@ -20,5 +20,4 @@ public class Config {
     public Samosa getSamosa(){
         return new Samosa();
     }
-    
 }
