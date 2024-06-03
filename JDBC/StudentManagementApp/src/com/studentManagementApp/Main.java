@@ -52,9 +52,22 @@ public class Main {
 				
 			}else if(c==3) {
 				//display all Student
-				String allStudents = StudentDao.getAllStudents();
-				System.out.println(allStudents);
-			
+				System.out.println("Press 1 to DISPLAY all students");
+				System.out.println("Press 2 to DISPLAY students by Id");
+				int ch = Integer.parseInt(reader.readLine());
+
+				if(ch == 1){
+					String allStudents = StudentDao.getAllStudents();
+					System.out.println(allStudents);
+				} else if (ch ==2) {
+					System.out.println("Enter the Id of the Student: ");
+					int id = Integer.parseInt(reader.readLine());
+					String student = StudentDao.getStudentById(id);
+					System.out.println(student);
+
+				}
+
+
 			}else if(c==4) {
 				//update student
 				System.out.println("Enter the Id of the student you would like to update");

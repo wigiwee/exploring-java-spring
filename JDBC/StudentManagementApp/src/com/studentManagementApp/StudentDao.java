@@ -2,10 +2,7 @@ package com.studentManagementApp;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 //contains all CRUD operations
 public class StudentDao {
@@ -70,6 +67,34 @@ public class StudentDao {
 		return new String("[ERROR] Something went wrong");
 	}
 
+	//get Student by id
+	public static String getStudentById(int id){
+		try(Connection connection = DBConnection.connect()){
+			String query = "SELECT * FROM student WHERE sId= ?";
+
+			PreparedStatement statement = connection.prepareStatement(query);
+
+			statement.setInt(1, id);
+			ResultSet resultSet =statement.executeQuery();
+
+			if(resultSet.next()){
+
+				int _id = resultSet.getInt(1);
+				String name = resultSet.getString(2);
+				String phone = resultSet.getString(3);
+				String city = resultSet.getString("sCity");
+				String string = "ID: " + _id + "\n" +
+						"Name: " + name + "\n" +
+						"Phone: " + phone + "\n" +
+						"City: " + city + "\n";
+				return string;
+			}
+		} catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "Something Went Wrong";
+    }
+
 	//Update operation
 	public static boolean updateStudent(int id) {
 		boolean result = false;
@@ -109,18 +134,18 @@ public class StudentDao {
 			if(city != null) {
 				string.append("sCity= \"").append(city).append("\", ");
 			}
-			StringBuilder string1 = new StringBuilder(string.substring(0,(string.toString().length() -2)));
-			string1.append(" ");
-			if(string1.toString().isEmpty()) {
-				return result;
+			StringBuilder string1;
+			if(!string.isEmpty()){
+				string1 = new StringBuilder(string.substring(0,(string.toString().length() -2)));
+			}else {
+				return false;
 			}
 
 
-			String query = "UPDATE student SET "+string1+"WHERE sId= "+id;
+			String query = "UPDATE student SET "+string1+" WHERE sId= "+id;
 			Statement statement = connection.createStatement();
 			statement.executeUpdate(query);
-			result = true;
-			return result;
+			return true;
 
 		}catch(Exception e) {
 			e.printStackTrace();
