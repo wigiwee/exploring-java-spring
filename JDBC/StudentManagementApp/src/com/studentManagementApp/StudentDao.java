@@ -14,7 +14,7 @@ public class StudentDao {
 			//JDBC code
 			
 			//creating query
-			String query = "INSERT INTO student(sName, sPhone, sCity) values(?,?,?)"; //parameterized dynamic query
+			String query = "INSERT INTO StudentManagementApp(sName, sPhone, sCity) values(?,?,?)"; //parameterized dynamic query
 			
 			PreparedStatement statement = connection.prepareStatement(query);
 
@@ -41,7 +41,7 @@ public class StudentDao {
 			//JDBC code
 
 			//creating query
-			String query = "SELECT * FROM student";  //parameterized dynamic query
+			String query = "SELECT * FROM StudentManagementApp";  //parameterized dynamic query
 
 			Statement statement = connection.createStatement();
 
@@ -70,7 +70,7 @@ public class StudentDao {
 	//get Student by id
 	public static String getStudentById(int id){
 		try(Connection connection = DBConnection.connect()){
-			String query = "SELECT * FROM student WHERE sId= ?";
+			String query = "SELECT * FROM StudentManagementApp WHERE sId= ?";
 
 			PreparedStatement statement = connection.prepareStatement(query);
 
@@ -142,7 +142,7 @@ public class StudentDao {
 			}
 
 
-			String query = "UPDATE student SET "+string1+" WHERE sId= "+id;
+			String query = "UPDATE StudentManagementApp SET "+string1+" WHERE sId= "+id;
 			Statement statement = connection.createStatement();
 			statement.executeUpdate(query);
 			return true;
@@ -162,7 +162,7 @@ public class StudentDao {
 
 			
 			//creating query
-			String query = "DELETE FROM student WHERE sId=?";  //parameterized dynamic query
+			String query = "DELETE FROM StudentManagementApp WHERE sId=?";  //parameterized dynamic query
 			
 			PreparedStatement statement = connection.prepareStatement(query);
 

@@ -12,7 +12,7 @@ public class DBConnection {
 			
 			String username = "happypotter";
 			String password = "password";
-			String url = "jdbc:mysql://localhost:3306/studentManagementApp";
+			String url = "jdbc:mysql://localhost:3306/ExploringSpring";
 			
 			connection = DriverManager.getConnection(url, username, password);
 
