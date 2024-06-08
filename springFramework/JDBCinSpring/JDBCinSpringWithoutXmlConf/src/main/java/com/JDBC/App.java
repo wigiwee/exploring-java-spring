@@ -14,24 +14,25 @@ public class App
     public static void main( String[] args )
     {
     	System.out.println("Welcome to Application");
+//    	ApplicationContext context = new ClassPathXmlApplicationContext("com/JDBC/configuration.xml");
         ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         
         
 //        //not recommended method
-//        JdbcTemplate template = context.getBean("jdbcTemplate", JdbcTemplate.class);
+        JdbcTemplate template = context.getBean("jdbcTemplate", JdbcTemplate.class);
 //        String query = "insert into students(id, name, city) value(?, ?, ?)";
 //        int result = 		template.update(query, 452, "Aayush", "Varangaon");
 //        System.out.println("no. of records inserted: "+result);
-        
+//        
         StudentDao studentDao =  context.getBean("studentDao", StudentDao.class);
-        Student student= new Student();
-        //inserting student
-        student.setId(160);
-        student.setName("Marsian");
-        student.setCity("mars");
-        
-        int result = studentDao.insert(student);
-        System.out.println("Studets added: " + result);
+//        Student student= new Student();
+//        //inserting student
+//        student.setId(160);
+//        student.setName("Marsian");
+//        student.setCity("mars");
+//        
+//        int result = studentDao.insert(student);
+//        System.out.println("Studets added: " + result);
 ////        
 //        //updating student
 //        Student student2 = new Student();

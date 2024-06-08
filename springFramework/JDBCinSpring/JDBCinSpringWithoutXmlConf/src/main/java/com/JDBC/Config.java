@@ -3,6 +3,7 @@ package com.JDBC;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -10,6 +11,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import com.spring.jdbc.dao.StudentDaoImpl;
 
 @Configuration
+@ComponentScan(basePackages =  "com.spring.jdbc.dao")
 public class Config {
 	
 	@Bean("dataSource")
@@ -28,11 +30,12 @@ public class Config {
 		jdbcTemplate.setDataSource(getDataSource());
 		return jdbcTemplate;
 	}
-	
-	@Bean("studentDao")
-	public StudentDaoImpl getStudentDao() {
-		StudentDaoImpl studentDaoImpl = new StudentDaoImpl();
-		studentDaoImpl.setJdbcTemplate(getJdbcTemplate());
-		return studentDaoImpl;
-	}
+
+	//this bean will be now autowired
+//	@Bean("studentDao")
+//	public StudentDaoImpl getStudentDao() {
+//		StudentDaoImpl studentDaoImpl = new StudentDaoImpl();
+//		studentDaoImpl.setJdbcTemplate(getJdbcTemplate());
+//		return studentDaoImpl;
+//	}
 }
