@@ -3,6 +3,7 @@ package com.SpringHibernate;
 import java.util.ArrayList;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
@@ -14,7 +15,7 @@ public class Laptop {
 	private int lId;
 	private String lName;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER) //the fetchtype eager makes the hibernate to entire object at a single time, and the fetchtyp lazy makes the hibernate to fetch the required foreign fields when accessed, this might result in delay
 	private ArrayList<Student> student = new ArrayList<>();
 	
 	public ArrayList<Student> getStudent(){
