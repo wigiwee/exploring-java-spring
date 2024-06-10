@@ -1,14 +1,8 @@
 package com.HibernateCache;
 
-import javax.persistence.Cacheable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-@Cacheable //enabling the class to be cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY) //selecting cache strategy
 @Entity
 public class Student {
 	@Id

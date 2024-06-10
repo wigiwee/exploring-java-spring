@@ -17,8 +17,8 @@ public class App {
         Session session = sf.openSession();
         session.beginTransaction();
         
-        //session.save(new Student(33, "john", "New York"));
-        //session.save(new Student(32, "Alex", "California"));
+        //session.save(new Student(33, "Aayush", "Varangaon"));
+        //session.save(new Student(32, "Kaustubh", "Loin"));
         
         
         //even though the object is requested twice, the query will be fired only once
@@ -34,7 +34,7 @@ public class App {
         
         //in this case query will be fired because the session is different
         //to optimize this second level cache is used
-        session2.get(Student.class, 32); //now with all the configuration done query will be fired only once
+        session2.get(Student.class, 32);
         
         session2.getTransaction().commit();
         session2.close();
