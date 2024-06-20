@@ -23,7 +23,7 @@
 
 		<property name="mappingResources">
 			<list>
-				<value>com/SpringORM/studentConf.xml</value>
+				<value>studentConf.xml</value>
 			</list>
 		</property>
 

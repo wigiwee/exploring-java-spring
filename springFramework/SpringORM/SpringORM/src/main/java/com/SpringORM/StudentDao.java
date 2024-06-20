@@ -2,7 +2,10 @@ package com.SpringORM;
 
 import java.util.List;
 
+
+
 import org.springframework.orm.hibernate5.HibernateTemplate;
+
 
 public class StudentDao {
 	private HibernateTemplate hibernateTemplate;
@@ -14,9 +17,9 @@ public class StudentDao {
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
 	}
-	
-	public int save(Student student) {
-		return (int) hibernateTemplate.save(student);
+			//enables write operation
+	public void save(Student student) {
+		hibernateTemplate.save(student);
 	}
 	
 	public void update(Student student) {
