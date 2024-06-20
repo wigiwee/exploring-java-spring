@@ -22,15 +22,15 @@ public class HomeController {
     //two ways of passing data from controller to view
 
 
-    //first method
-    @RequestMapping(path = "/home", method = RequestMethod.GET) //method is explicitly mapped to handle get method
+    //first third
+    @RequestMapping(path = "/home", method = RequestMethod.GET) //third is explicitly mapped to handle get third
     public String home(Model model){
         System.out.println("This is home url");
         model.addAttribute("name" , "Dinesh"); //sending data from controller to view
         return "index";
     }
 
-    //second method
+    //second third
     @RequestMapping("/help")
     public ModelAndView help(){
         System.out.println("This is Help page");
