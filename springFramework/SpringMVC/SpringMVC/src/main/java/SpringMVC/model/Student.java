@@ -1,17 +1,32 @@
 package SpringMVC.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class StudentEntity {
+public class Student {
     private String name;
     private long id;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date date;
     private List<String> courses;
     private String gender;
     private String type;
+    private Address address;
 
-    public StudentEntity() {
+
+
+    public Student() {
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getName() {
@@ -64,13 +79,14 @@ public class StudentEntity {
 
     @Override
     public String toString() {
-        return "StudentEntity{" +
+        return "Student{" +
                 "name='" + name + '\'' +
                 ", id=" + id +
                 ", date=" + date +
                 ", courses=" + courses +
                 ", gender='" + gender + '\'' +
                 ", type='" + type + '\'' +
+                ", address=" + address +
                 '}';
     }
 }

@@ -1,9 +1,11 @@
 package SpringMVC.controller;
 
+import SpringMVC.model.Student;
 import SpringMVC.model.User;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -70,4 +72,30 @@ public class FormController {
         }
         return "success";
     }
+
+    //handling complex form
+
+    @RequestMapping("complexform")
+    public String renderComplexForm(){
+        return "complexform";
+    }
+
+    //method not preferred
+//    @RequestMapping(path = "handleform" , method = RequestMethod.POST)
+//    public void handleform(@RequestParam("name") String name,
+//                           @RequestParam("id") Long id){
+//    }
+
+    @RequestMapping(path = "handleform", method = RequestMethod.POST)
+    public String formHandler(@ModelAttribute("student") Student student, BindingResult bindingResult){              //here student object consists of Address class obj
+
+        if(bindingResult.hasErrors()){          //handling error
+            return "complexform";
+        }
+        System.out.println(student);    //we got date, we can now save it to database
+        System.out.println(student.getAddress());   //name the input fields as address.street , address.city to automatically get Address obj in student obj/ check complexform.jsp
+
+        return "success";
+    }
+
 }
