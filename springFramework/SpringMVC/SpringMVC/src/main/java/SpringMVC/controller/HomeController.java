@@ -2,6 +2,7 @@ package SpringMVC.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -65,5 +66,13 @@ public class HomeController {
     public String service(){
         System.out.println("This is service page");
         return "service";
+    }
+
+
+    //getting variable from request url
+    @RequestMapping(path = "/book/{id}")
+    public String handle(@PathVariable("id") int id){
+        System.out.println(id);
+        return "landing";
     }
 }
