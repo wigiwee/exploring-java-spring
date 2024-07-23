@@ -1,6 +1,7 @@
 package com.jdbc.springjdbc.dao.impl;
 
 import com.jdbc.springjdbc.dao.Model.Product;
+import com.jdbc.springjdbc.dao.Model.ProductWithCategory;
 import com.jdbc.springjdbc.dao.ProductDao;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,7 +26,9 @@ public class ProductDaoImpl implements ProductDao {
                 "id int primary key, " +
                 "title varchar(255) not null, " +
                 "description varchar(500) not null, " +
-                "price double(10,2) not null)";
+                "price int not null, " +
+                "cat_id int, "+
+                "foreign key (cat_id) references categories(id)) ";
         jdbcTemplate.update(query);
     }
 
@@ -81,13 +84,14 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public Product create(Product product) {
-        String query = "insert into products(id, title, description, price) values(?,?,?,?)";
+        String query = "insert into products(id, title, description, price, cat_id) values(?,?,?,?,?)";
         int result =jdbcTemplate.update(
                 query,
                 product.getId(),
                 product.getTitle(),
                 product.getDescription(),
-                product.getPrice()
+                product.getPrice(),
+                product.getCat_id()
         );
         System.out.println(result + "rows affected");
         return product;
@@ -113,5 +117,28 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public List<Product> search(String keyword) {
         return List.of();
+    }
+
+    @Override
+    public List<ProductWithCategory> getAllProductWithCategory() {
+        String query = "select p.id as id, " +
+                "p.title as title, " +
+                "p.description as description, " +
+                "p.price as price, " +
+                "c.title as catTitle " +
+                "from products as p inner join categories c on p.cat_id = c.id";
+        return jdbcTemplate.query(query, new RowMapper<ProductWithCategory>() {
+
+            @Override
+            public ProductWithCategory mapRow(ResultSet rs, int rowNum) throws SQLException {
+                ProductWithCategory productWithCategory = new ProductWithCategory();
+                productWithCategory.setId(rs.getInt("id"));
+                productWithCategory.setTitle(rs.getString("title"));
+                productWithCategory.setDescription(rs.getString("description"));
+                productWithCategory.setPrice(rs.getInt("price"));
+                productWithCategory.setCatTitle(rs.getString("catTitle"));
+                return productWithCategory;
+            }
+        });
     }
 }

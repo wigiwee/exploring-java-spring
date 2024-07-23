@@ -1,6 +1,7 @@
 package com.jdbc.springjdbc.dao;
 
 import com.jdbc.springjdbc.dao.Model.Product;
+import com.jdbc.springjdbc.dao.Model.ProductWithCategory;
 
 import java.util.List;
 
@@ -17,5 +18,7 @@ public interface ProductDao {
     Product delete(int id);
 
     List<Product> search(String keyword);
+
+    List<ProductWithCategory> getAllProductWithCategory();
 
 }

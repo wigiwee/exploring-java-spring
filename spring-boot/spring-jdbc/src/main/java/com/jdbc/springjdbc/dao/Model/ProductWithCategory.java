@@ -1,39 +1,32 @@
 package com.jdbc.springjdbc.dao.Model;
 
-public class Product {
+public class ProductWithCategory {
 
     private int id;
     private String title;
     private String description;
     private int price;
+    private String catTitle;
 
-    private int cat_id;
-
-    public int getCat_id() {
-        return cat_id;
-    }
-
-    public void setCat_id(int cat_id) {
-        this.cat_id = cat_id;
-    }
-
-    public Product() {
-    }
-
-    public Product(int id, String title, String description, int price) {
+    public ProductWithCategory(int id, String title, String description, int price, String catTitle) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.price = price;
+        this.catTitle = catTitle;
+    }
+
+    public ProductWithCategory() {
     }
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "ProductWithCategory{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
+                ", catTitle=" + catTitle +
                 '}';
     }
 
@@ -67,5 +60,13 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getCatTitle() {
+        return catTitle;
+    }
+
+    public void setCatTitle(String catTitle) {
+        this.catTitle = catTitle;
     }
 }
