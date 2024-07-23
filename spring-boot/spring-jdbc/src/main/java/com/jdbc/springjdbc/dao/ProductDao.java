@@ -1,8 +1,10 @@
 package com.jdbc.springjdbc.dao;
 
+import com.jdbc.springjdbc.dao.Model.Product;
+
 import java.util.List;
 
-public interface Product {
+public interface ProductDao {
 
     List<Product> getAll();
 
