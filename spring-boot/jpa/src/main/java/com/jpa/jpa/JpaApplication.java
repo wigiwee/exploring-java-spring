@@ -26,7 +26,7 @@ public class JpaApplication implements CommandLineRunner{
 		product.setDescription("128 inch 8k Tv");
 		product.setPrice(2334);
 		
-		productService.create(product);		
+		// productService.create(product);		
 	}
 
 }

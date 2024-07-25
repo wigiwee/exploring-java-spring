@@ -6,17 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jpa.jpa.entities.Product;
+import com.jpa.jpa.repositories.CategoryRepository;
 import com.jpa.jpa.repositories.ProductRepository;
+
+// import in.repositories.CategoryRepository;
 
 @Service
 public class ProductService {
 
     // @Autowired   //implicitly autowiring 
     private ProductRepository productRepository;
-    
-    //enabling constructor injection (by default)
-    public ProductService(ProductRepository productRepository){
+    private CategoryRepository categoryRepository;
+
+    //constructor injection enabled by default
+    public ProductService(ProductRepository productRepository, CategoryRepository categoryRepository){
         this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
     }
     
     public Product create(Product product){
