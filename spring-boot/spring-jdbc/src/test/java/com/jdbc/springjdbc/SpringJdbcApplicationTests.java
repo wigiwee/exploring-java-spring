@@ -8,6 +8,7 @@ class SpringJdbcApplicationTests {
 
     @Test
     void contextLoads() {
-    }
+        System.out.println("Starting testing");
 
+    }
 }

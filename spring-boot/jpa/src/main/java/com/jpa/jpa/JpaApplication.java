@@ -22,11 +22,12 @@ public class JpaApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 
 		Product product = new Product();
-		product.setTitle("tv");
-		product.setDescription("128 inch 8k Tv");
-		product.setPrice(2334);
+		product.setTitle("Samsung S23 ultra");
+		product.setDescription("flagship phone");
+		product.setPrice(1200);
+
 		
-		// productService.create(product);		
+		//  productService.create(product);
 	}
 
 }

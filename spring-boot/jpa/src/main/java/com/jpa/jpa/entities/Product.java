@@ -21,8 +21,8 @@ import lombok.ToString;
 @Table(name = "jpa_products")
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Entity
+// @ToString        //causing some problem with printing join query returned product obj 
 public class Product {
 
     @Id
@@ -34,6 +34,17 @@ public class Product {
             nullable = false, 
             length = 200
     )
+
+    @Override
+    public String toString(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("id: ").append(this.id).append(" ");
+        stringBuilder.append("description: ").append(this.description).append(" ");
+        stringBuilder.append("price: ").append(this.price).append(" ");
+        stringBuilder.append("category: ").append(this.category.getTitle());
+        
+        return stringBuilder.toString();
+    }
     private String title;
 
     @Nullable
