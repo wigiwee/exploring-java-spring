@@ -5,9 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jpa.jpa.entities.Category;
 import com.jpa.jpa.entities.Product;
 import com.jpa.jpa.repositories.CategoryRepository;
 import com.jpa.jpa.repositories.ProductRepository;
+
+import jakarta.transaction.Transactional;
 
 // import in.repositories.CategoryRepository;
 
@@ -38,6 +41,34 @@ public class ProductService {
 
     public void delete(int id){
         productRepository.deleteById(id);
+    }
+
+
+    //implementing transaction 
+    //method to save  a category and product
+
+    @Transactional
+    public void transactCategoryWithProduct(){
+
+        //saving category
+        Category category = new Category();
+        category.setTitle("garments");
+        
+        categoryRepository.save(category);
+
+
+        Product product = new Product();
+        product.setTitle("clothes");
+
+        //description will throw an exception   
+        //after this statement throws an exception the category created will be automatically deleted
+        //all the changes in this method will be roll backed
+        product.setDescription("a 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d thingsa 3d printer to print 3d things");
+        
+
+        product.setPrice(1255);
+        
+        productRepository.save(product);
     }
 
 }

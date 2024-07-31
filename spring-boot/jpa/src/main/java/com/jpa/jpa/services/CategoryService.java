@@ -30,6 +30,7 @@ public class CategoryService {
         
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         
+        //represents our sql query
         CriteriaQuery<Category> criteriaQuery = criteriaBuilder.createQuery(Category.class);
         //select clause
         //select root entity

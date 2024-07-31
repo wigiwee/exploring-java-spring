@@ -34,18 +34,7 @@ public class Product {
             nullable = false, 
             length = 200
     )
-
-    @Override
-    public String toString(){
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("id: ").append(this.id).append(" ");
-        stringBuilder.append("description: ").append(this.description).append(" ");
-        stringBuilder.append("price: ").append(this.price).append(" ");
-        stringBuilder.append("category: ").append(this.category.getTitle());
-        
-        return stringBuilder.toString();
-    }
-    private String title;
+   private String title;
 
     @Nullable
     private String description;
@@ -63,5 +52,17 @@ public class Product {
     //multiple products belongs to single category
     @ManyToOne
     private Category category;
-    
+ 
+    @Override
+    public String toString(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("id: ").append(this.id).append(" ");
+        stringBuilder.append("description: ").append(this.description).append(" ");
+        stringBuilder.append("price: ").append(this.price).append(" ");
+        stringBuilder.append("category: ").append(this.category.getTitle());
+        
+        return stringBuilder.toString();
+    }
+
+ 
 }
