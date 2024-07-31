@@ -46,13 +46,14 @@ class JpaApplicationTests {
 	void createCategory(){
 
 		Category category = new Category();
-		category.setTitle("Phone");
-		category.setId(1);
+		category.setTitle("gaming setup");
+		// category.setId(1);
 		Category category2 = new Category();
 		category2.setTitle("trending");
 		category2.setId(2);
 		categoryRepository.save(category);
-		categoryRepository.save(category2);
+		// categoryRepository.save(category2);
+		System.out.println("Category saved");
 	}
 
 	@Test
