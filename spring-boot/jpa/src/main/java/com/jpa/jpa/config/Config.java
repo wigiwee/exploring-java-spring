@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan( basePackages = {"com.jpa"})     
 // @EnableJpaRepositories( basePackages = {"in.repositories", "com.jpa.jpa"})   //to use repositories in different package
 public class Config {
-
+    
 }

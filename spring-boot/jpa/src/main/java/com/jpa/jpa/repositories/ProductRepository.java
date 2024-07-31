@@ -63,8 +63,5 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 
     @Query("select p from Product p where p.title =:prodTitle ")
-    List<ProductWithCategory> getProductWithCategories(@Param("prodTitle") String title){
-
-
-    }
+    List<ProductWithCategory> getProductWithCategories(@Param("prodTitle") String title);
 }
