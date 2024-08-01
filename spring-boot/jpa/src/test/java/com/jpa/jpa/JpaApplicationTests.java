@@ -44,7 +44,6 @@ class JpaApplicationTests {
 
 	@Test
 	void createCategory(){
-
 		Category category = new Category();
 		category.setTitle("gaming setup");
 		// category.setId(1);
