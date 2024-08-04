@@ -1,4 +1,4 @@
-package com.jpa.jpa.entities;
+package com.ecom.entities;
 
 import java.util.List;
 
@@ -12,7 +12,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import com.jpa.jpa.listeners.CategoryEventListeners;
+import com.ecom.listeners.CategoryEventListeners;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,6 +43,8 @@ public class Category {
     // private Product product;
 
     //multiple products belongs to single category
+
+    @JsonIgnore
     @OneToMany(
         mappedBy = "category",      //won't create a extra table  
         cascade = CascadeType.ALL,  // when a category is deleted the products will be deleted

@@ -1,4 +1,4 @@
-package listeners;
+package com.jpa.jpa.listeners;
 
 import com.jpa.jpa.entities.Category;
 
