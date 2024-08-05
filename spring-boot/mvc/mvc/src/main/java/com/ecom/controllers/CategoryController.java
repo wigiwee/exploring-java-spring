@@ -10,6 +10,9 @@ import com.ecom.services.CategoryService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -61,5 +64,16 @@ public class CategoryController {
     }
     
     
+    //exception handler for CategoryController class
+    //controller level exception handler method
+    // @ExceptionHandler(RuntimeException.class)
+    // public ResponseEntity<String> handlingException(RuntimeException ex){
+    //     System.out.println(ex.getMessage());
+    //     System.out.println();
+    //     // return "Error Occurred"+ ex.getMessage();        //this will send status code 200
+    //     return ResponseEntity
+    //         .status(HttpStatus.INTERNAL_SERVER_ERROR)
+    //         .body("Error Occurred " + ex.getMessage());
+    // }
     
 }

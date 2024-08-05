@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecom.entities.Category;
+import com.ecom.exceptions.ResourceNotFoundException;
 
 // @RestController // @ResponseBody + @Controller
 @Controller
@@ -20,8 +21,12 @@ public class PageController {
     
     @RequestMapping(path = "/home", method=RequestMethod.GET)
     @ResponseBody
-    public List<String> requestMethodName() {
-        return List.of("abc", "sa", "aldjf", "aldjf", "ladjf");
+    public String getHome() {
+        if(true){
+            throw new ResourceNotFoundException("home controller exception");
+        }
+        
+        return "hello from home";
     }
 
     @GetMapping("/courses")
