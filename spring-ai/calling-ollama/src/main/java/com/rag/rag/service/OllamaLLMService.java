@@ -1,5 +1,6 @@
 package com.rag.rag.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.ai.chat.prompt.Prompt;
@@ -8,6 +9,7 @@ import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
+import lombok.experimental.var;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -27,9 +29,13 @@ public class OllamaLLMService {
                 content: {content}
                 question: {input}
                 """;
+
+        String content = """
+                the user is a third year computer engineering student, he is trying to understand llm's
+                """;
         PromptTemplate promptTemplate = new PromptTemplate(message);
 
-        Prompt prompt = promptTemplate.create(Map.of("input", query));
+        Prompt prompt = promptTemplate.create(Map.of("input", query, "content", content));
 
         String response = ollamaChatModel.call(prompt).getResult().getOutput().getText();
 
