@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
-public class CitiesController {
+public class CityController {
 
     private final ChatClient chatClient;
 
-    public CitiesController(ChatClient.Builder builder) {
+    public CityController(ChatClient.Builder builder) {
         this.chatClient = builder.build();
     }
 
@@ -25,7 +25,9 @@ public class CitiesController {
         SystemMessage systemMessage = new SystemMessage(
                 "you are are helpful ai assistant answering questions about cities around the world");
         UserMessage userMessage = new UserMessage(message);
-        return chatClient.prompt(new Prompt(List.of(systemMessage, userMessage))).call().content();
+
+        return chatClient.prompt(new Prompt(List.of(systemMessage, userMessage))).functions("currentWeatherFunction")
+                .call().content();
 
     }
 
