@@ -24,4 +24,8 @@ In this project, we use **Spring Boot** to:
 
 ## Usage
 
-![alt text](image.png)
+![alt text](assets/image.png)
+
+## Observations
+
+various llm models like Zephyr and deepseek-r1:14b don't support function calling,  meanwhile llama3.2 and mistral do support function calling but in case of llama3.2 (3b) the llm was firing api request for unrelated prompts, but in case of mistral (7b) the llm fired api request only when necessary.

@@ -7,10 +7,14 @@ import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.web.bind.annotation.RestController;
+
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
+@Slf4j
 public class CityController {
 
     private final ChatClient chatClient;
@@ -21,12 +25,14 @@ public class CityController {
 
     @GetMapping("/cities")
     public String cities(@RequestParam(value = "message") String message) {
-        System.out.println("i got executed");
+        log.info("received request at /cities with prompt: " + message);
         SystemMessage systemMessage = new SystemMessage(
-                "you are are helpful ai assistant answering questions about cities around the world");
+                "You are a helpful AI assistant answering questions about cities around the world. " +
+                        "If the user asks about the weather, use the 'currentWeatherForCityFunction' to provide accurate information.");
         UserMessage userMessage = new UserMessage(message);
 
-        return chatClient.prompt(new Prompt(List.of(systemMessage, userMessage))).functions("currentWeatherFunction")
+        return chatClient.prompt(new Prompt(List.of(systemMessage, userMessage)))
+                .functions("currentWeatherForCityFunction")
                 .call().content();
 
     }

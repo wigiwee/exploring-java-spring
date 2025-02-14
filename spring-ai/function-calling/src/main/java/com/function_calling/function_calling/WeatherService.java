@@ -39,7 +39,7 @@ public class WeatherService implements Function<WeatherService.Request, WeatherS
         log.info("Weather Request: {}", request);
         Response response = restClient.get()
                 .uri(uribuilder -> uribuilder
-                        .path("/current.json")
+                        .path("v1/current.json")
                         .queryParam("key", weatherProps.apiKey())
                         .queryParam("q", request.city()).build())
                 .retrieve()
