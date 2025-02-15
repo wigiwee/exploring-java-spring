@@ -1,0 +1,1 @@
+hit http://localhost:8080 (dosen't stream the response ) and http://localhost:8080/stream.html (streams the response\) to use the application
